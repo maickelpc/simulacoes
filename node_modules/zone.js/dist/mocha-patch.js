@@ -48,7 +48,7 @@
         it: Mocha.it
     };
     function modifyArguments(args, syncTest, asyncTest) {
-        var _loop_1 = function(i) {
+        var _loop_1 = function (i) {
             var arg = args[i];
             if (typeof arg === 'function') {
                 // The `done` callback is only passed through if the function expects at
@@ -103,7 +103,6 @@
         };
         return modifyArguments(args, syncTest, asyncTest);
     }
-    
     context.describe = context.suite = Mocha.describe = function () {
         return mochaOriginal.describe.apply(this, wrapDescribeInZone(arguments));
     };
@@ -143,14 +142,17 @@
         };
         Mocha.Runner.prototype.run = function (fn) {
             this.on('test', function (e) {
-                if (Zone.current !== rootZone) {
-                    throw new Error('Unexpected zone: ' + Zone.current.name);
-                }
                 testZone = rootZone.fork(new ProxyZoneSpec());
+            });
+            this.on('fail', function (test, err) {
+                var proxyZoneSpec = testZone && testZone.get('ProxyZoneSpec');
+                if (proxyZoneSpec && err) {
+                    err.message += proxyZoneSpec.getAndClearPendingTasksInfo();
+                }
             });
             return originalRun.call(this, fn);
         };
     })(Mocha.Runner.prototype.runTest, Mocha.Runner.prototype.run);
-})(window);
+})(typeof window !== 'undefined' && window || typeof self !== 'undefined' && self || global);
 
 })));
