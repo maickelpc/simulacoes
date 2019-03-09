@@ -1,11 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http'
+
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { RouterModule, PreloadAllModules } from '@angular/router';
+import { ROUTES } from './app.routes';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { SettingsComponent } from './layout/settings/settings.component';
 import { MenuComponent } from './layout/menu/menu.component';
+import { LoginComponent } from './security/login/login.component';
+import { HomeComponent } from './home/home.component';
+import { SharedModule} from './shared/shared.module'
 
 @NgModule({
   declarations: [
@@ -13,12 +22,22 @@ import { MenuComponent } from './layout/menu/menu.component';
     HeaderComponent,
     FooterComponent,
     SettingsComponent,
-    MenuComponent
+    MenuComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
-    BrowserModule
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
+    HttpClientModule,
+    BrowserModule,
+    RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules}),
+    SharedModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    //{provide: LOCALE_ID, useValue:'pt-BR' },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
