@@ -1,3 +1,11 @@
 export interface User{
-  token : string
+
+  username: string
+  firstName: string
+  lastName: string
+  email: string
+
+  access : string
+  refresh : string
+
 }

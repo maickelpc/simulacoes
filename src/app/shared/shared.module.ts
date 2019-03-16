@@ -4,18 +4,21 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 import {InputComponent} from './input/input.component'
 import {RadioComponent} from './radio/radio.component'
+import { NotificationService } from './messages/notification.service'
 
 
 //Servicos
-import { LoginService } from '../security/login/login.service'
+import { LoginService } from '../security/login/login.service';
+import { SnackbarComponent } from './messages/snackbar/snackbar.component'
+import { LoggedInGuard } from '../security/loggedin.guard'
 
 
 
 @NgModule({
-  declarations: [InputComponent, RadioComponent],
+  declarations: [InputComponent, RadioComponent, SnackbarComponent],
   imports:[CommonModule, FormsModule, ReactiveFormsModule],
   exports:[
-    InputComponent, RadioComponent,
+    InputComponent, RadioComponent,SnackbarComponent,
     CommonModule, FormsModule, ReactiveFormsModule // Estes para que quem improtar o modulo, nao precise REimportar
   ]
 })
@@ -25,7 +28,10 @@ export class SharedModule{
     return {
       ngModule: SharedModule,
       providers: [
-        LoginService
+        LoginService,
+        SnackbarComponent,
+        NotificationService,
+        LoggedInGuard
       ]
     }
   }

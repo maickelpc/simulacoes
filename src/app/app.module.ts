@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http'
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { ROUTES } from './app.routes';
 
@@ -29,6 +31,7 @@ import { SharedModule} from './shared/shared.module'
   imports: [
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
     RouterModule,
     HttpClientModule,
     BrowserModule,
