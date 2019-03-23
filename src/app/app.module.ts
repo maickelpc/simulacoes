@@ -16,7 +16,8 @@ import { SettingsComponent } from './layout/settings/settings.component';
 import { MenuComponent } from './layout/menu/menu.component';
 import { LoginComponent } from './security/login/login.component';
 import { HomeComponent } from './home/home.component';
-import { SharedModule} from './shared/shared.module'
+import { SharedModule} from './shared/shared.module';
+import { ProfileComponent } from './admin/profile/profile.component'
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SharedModule} from './shared/shared.module'
     SettingsComponent,
     MenuComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ProfileComponent
   ],
   imports: [
     FormsModule,

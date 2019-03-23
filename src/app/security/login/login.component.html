@@ -7,11 +7,11 @@
     <p class="login-box-msg">Login</p>
 
     <form [formGroup]="loginForm">
-      <app-input [label]="Login" [showTip]=false errorMessage="Preenchimento Obrigatório">
+      <app-input label="Login" [showTip]=false errorMessage="Preenchimento Obrigatório">
         <input type="login" formControlName="login" class="form-control" placeholder="Login">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </app-input>
-      <app-input [label]="Senha" [showTip]=false errorMessage="Preenchimento Obrigatório">
+      <app-input label="Senha" [showTip]=false errorMessage="Preenchimento Obrigatório">
         <input type="password" formControlName="password" class="form-control" placeholder="Senha">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </app-input>

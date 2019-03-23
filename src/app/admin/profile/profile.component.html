@@ -1,0 +1,55 @@
+<div class="content-wrapper">
+  <section class="content-header">
+    <h1>
+      Perfil
+      <small><p>
+      {{user.first_name}} {{user.last_name}}
+      </p></small>
+    </h1>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <!-- Formulario com dados -->
+    <div class="box box-primary">
+           <div class="box-header with-border">
+             <h3 class="box-title">Formulário de cadastro</h3>
+           </div>
+           <!-- /.box-header -->
+           <!-- form start -->
+           <form role="form" [formGroup]="profileForm">
+             <div class="box-body">
+
+               <app-input label="Nome"  errorMessage="Preenchimento Obrigatório">
+                 <label for="nome">Nome</label>
+                 <input type="text" id="nome" [(ngModel)]="user.first_name" required formControlName="first_name" class="form-control" placeholder="Nome">
+               </app-input>
+
+               <app-input label="Sobrenome"  errorMessage="Preenchimento Obrigatório">
+                 <label for="sobrenome">Sobrenome</label>
+                 <input type="text" [(ngModel)]="user.last_name" id="sobrenome" required formControlName="last_name" class="form-control" placeholder="sobrenome">
+               </app-input>
+
+               <hr>
+               <div class="form-group">
+                 <label for="exampleInputFile">File input</label>
+                 <input type="file" id="exampleInputFile">
+
+               </div>
+               <div class="checkbox">
+                 <label>
+                   <input type="checkbox"> Check me out
+                 </label>
+               </div>
+             </div>
+             <!-- /.box-body -->
+
+             <div class="box-footer">
+               <button type="button" (click)="login()"  [disabled]="profileForm.invalid"  class="btn btn-primary">Salvar</button>
+             </div>
+           </form>
+         </div>
+
+    <!-- Formulario com dados -->
+  </section>
+</div>

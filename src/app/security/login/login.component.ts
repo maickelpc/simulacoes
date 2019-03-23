@@ -5,7 +5,7 @@ import { NotificationService } from '../../shared/messages/notification.service'
 
 
 
-import { LoginService } from './login.service'
+import { LoginService } from '../../services/login.service'
 
 @Component({
   selector: 'app-login',
@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
 
       }, response =>  { // catch
         this.notification.notify(`Credenciais inválidas!`);
+
         console.log(response);
       },() => { // finally
         this.router.navigate([atob(this.navigateTo)]);

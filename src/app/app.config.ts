@@ -1,1 +1,2 @@
-export const API = 'http://ceasb.maickel.site';
+//export const API = 'http://apiceasb.maickel.site';
+export const API = 'http://localhost:8000';

@@ -47,15 +47,15 @@
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="hidden-xs">{{loginService.loggedUser.firstName}}</span>
-            <img src="http://2.bp.blogspot.com/-602ynYTxuKU/TxJKWNKt0sI/AAAAAAAABMs/7887L1of0xo/s1600/pica-pau1.png" class="user-image" alt="User Image">
+            <span class="hidden-xs">{{loginService.user().first_name}}</span>
+            <img src="{{loginService.user().image}}" class="user-image" alt="User Image">
           </a>
           <ul class="dropdown-menu">
 
             <!-- Menu Footer-->
             <li class="user-footer">
               <div class="pull-left">
-                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                <a href="/profile" class="btn btn-default btn-flat">Profile</a>
               </div>
             </li>
           </ul>

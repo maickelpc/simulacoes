@@ -8,9 +8,11 @@ import { NotificationService } from './messages/notification.service'
 
 
 //Servicos
-import { LoginService } from '../security/login/login.service';
+import { LoginService } from '../services/login.service';
+import { UserService } from '../services/user.service'
 import { SnackbarComponent } from './messages/snackbar/snackbar.component'
-import { LoggedInGuard } from '../security/loggedin.guard'
+import { LoggedInGuard } from '../security/loggedin.guard';
+
 
 
 
@@ -29,6 +31,7 @@ export class SharedModule{
       ngModule: SharedModule,
       providers: [
         LoginService,
+        UserService,
         SnackbarComponent,
         NotificationService,
         LoggedInGuard
