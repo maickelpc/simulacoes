@@ -27,8 +27,6 @@ export class UserService{
 
   constructor(private http:HttpClient, private router: Router, private login:LoginService){
 
-    console.log(login.user().access);
-
   }
 
 

@@ -1,0 +1,106 @@
+<div class="content-wrapper">
+  <section class="content-header">
+    <h1>
+      Arquivos
+      <small></small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li class="active">Arquivos</li>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+  <div class="row">
+    <div class="col-md-5">
+      <input type="file" (change)="enviarArquivo($event)">
+    </div>
+    <div class="col-md-2">
+      <a class="btn btn-block btn-social btn-flickr">
+        <i class="fa fa-flickr"></i> Enviar
+      </a>
+    </div>
+  </div>
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Ultimos arquivos enviados</h3>
+              
+              <div class="box-tools">
+                <div class="input-group input-group-sm" style="width: 300px;">
+                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                  <div class="input-group-btn">
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
+                <tr>
+                  <th>ID</th>
+                  <th>Usuário</th>
+                  <th>Acelerômetro</th>
+                  <th>Data</th>
+                  <th>Media</th>
+                  <th>Desvio</th>
+                  <th>Analise</th>
+                  <th>Frequencia</th>
+                  <th>Grafico</th>
+                </tr>
+                
+                <tr *ngFor="let arquivo of arquivos">
+                  <td>{{arquivo.id}}</td>
+                  <td>{{arquivo.usuario.first_name}}</td>
+                  <td>{{arquivo.acelerometro.codigo}}</td>
+                  <td>{{arquivo.dataLancamento | date:'dd/MM/yyyy' }}</td>
+                  <td>{{arquivo.media | number}}</td>
+                  <td>{{arquivo.desvioPadrao | number}}</td>
+                  <td>{{arquivo.dataInicialLeitura | date:'dd/MM/yyyy hh:mm:ss'}}</td>
+                  <td>{{arquivo.frequenciaTempo | number}}</td>
+                  <td>
+                    <button type="button" class="btn btn-info btn-flat" (click)="grafico(arquivo)"
+                      data-toggle="modal" data-placement="bottom" title="Gráfico" data-target="#modalGrafico1"> 
+                      <span class="glyphicon glyphicon-fullscreen"></span>
+                    </button>
+                  </td>
+                </tr>
+
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalGrafico1" tabindex="-1" role="dialog" aria-labelledby="modalGrafico1Label" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalGrafico1Label">Grafico 01</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="grafico1">
+          <canvas id="canvas">{{ grafico1 }}</canvas>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+

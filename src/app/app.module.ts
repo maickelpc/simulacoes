@@ -17,7 +17,8 @@ import { MenuComponent } from './layout/menu/menu.component';
 import { LoginComponent } from './security/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { SharedModule} from './shared/shared.module';
-import { ProfileComponent } from './admin/profile/profile.component'
+import { ProfileComponent } from './admin/profile/profile.component';
+import { ArquivoComponent } from './arquivo/arquivo.component'
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ProfileComponent } from './admin/profile/profile.component'
     MenuComponent,
     LoginComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    ArquivoComponent
   ],
   imports: [
     FormsModule,
