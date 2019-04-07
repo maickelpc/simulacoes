@@ -17,9 +17,9 @@
       <input type="file" (change)="enviarArquivo($event)">
     </div>
     <div class="col-md-2">
-      <a class="btn btn-block btn-social btn-flickr">
+      <!-- <a class="btn btn-block btn-social btn-flickr">
         <i class="fa fa-flickr"></i> Enviar
-      </a>
+      </a> -->
     </div>
   </div>
 <div class="row">
@@ -27,7 +27,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Ultimos arquivos enviados</h3>
-              
+
               <div class="box-tools">
                 <div class="input-group input-group-sm" style="width: 300px;">
                   <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
@@ -53,25 +53,26 @@
                   <th>Frequencia</th>
                   <th>Grafico</th>
                 </tr>
-                
+
                 <tr *ngFor="let arquivo of arquivos">
                   <td>{{arquivo.id}}</td>
                   <td>{{arquivo.usuario.first_name}}</td>
                   <td>{{arquivo.acelerometro.codigo}}</td>
                   <td>{{arquivo.dataLancamento | date:'dd/MM/yyyy' }}</td>
-                  <td>{{arquivo.media | number}}</td>
-                  <td>{{arquivo.desvioPadrao | number}}</td>
+                  <td>{{arquivo.media | number:'1.5-5'}}</td>
+                  <td>{{arquivo.desvioPadrao | number:'1.5-5'}}</td>
                   <td>{{arquivo.dataInicialLeitura | date:'dd/MM/yyyy hh:mm:ss'}}</td>
-                  <td>{{arquivo.frequenciaTempo | number}}</td>
+                  <td>{{arquivo.frequenciaTempo | number:'1.5-5'}}</td>
                   <td>
                     <button type="button" class="btn btn-info btn-flat" (click)="grafico(arquivo)"
-                      data-toggle="modal" data-placement="bottom" title="Gráfico" data-target="#modalGrafico1"> 
+                      data-toggle="modal" data-placement="bottom" title="Gráfico" data-target="#modalGrafico1">
                       <span class="glyphicon glyphicon-fullscreen"></span>
                     </button>
                   </td>
                 </tr>
 
               </table>
+
             </div>
             <!-- /.box-body -->
           </div>
@@ -93,8 +94,25 @@
         </button>
       </div>
       <div class="modal-body">
-        <div *ngIf="grafico1">
-          <canvas id="canvas">{{ grafico1 }}</canvas>
+        <div>
+          <h5>Média: {{arquivo.media | number:'1.10-10'}}</h5>
+          <h5>Desvio Padrão: {{arquivo.desvioPadrao | number:'1.10-10'}}</h5>
+        </div>
+        <hr>
+        <div>
+          <google-chart width="800"
+              [title]="chart_title"
+              [type]="chart_type"
+              [data]="chart_data"
+              [columnNames]="chart_columnNames"
+              [roles]="chart_roles"
+              [options]="chart_options"
+              (ready)="onReady()"
+              (select)="onSelect($event)"
+              (error)="onError($event)"
+              (mouseenter)="onMouseEnter($event)"
+              (mouseleave)="onMouseLeave($event)">
+            </google-chart>
         </div>
       </div>
       <div class="modal-footer">
@@ -103,4 +121,3 @@
     </div>
   </div>
 </div>
-

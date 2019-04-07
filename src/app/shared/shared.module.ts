@@ -1,6 +1,9 @@
 import {NgModule, ModuleWithProviders} from '@angular/core'
 import {CommonModule} from '@angular/common'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+import {ChartsModule } from 'ng2-charts'
+import { GoogleChartsModule } from 'angular-google-charts';
+
 
 import {InputComponent} from './input/input.component'
 import {RadioComponent} from './radio/radio.component'
@@ -19,9 +22,9 @@ import { ArquivoService } from '../services/arquivo.service';
 
 @NgModule({
   declarations: [InputComponent, RadioComponent, SnackbarComponent],
-  imports:[CommonModule, FormsModule, ReactiveFormsModule],
+  imports:[CommonModule, FormsModule, ReactiveFormsModule, ChartsModule, GoogleChartsModule],
   exports:[
-    InputComponent, RadioComponent,SnackbarComponent,
+    InputComponent, RadioComponent,SnackbarComponent,ChartsModule,GoogleChartsModule,
     CommonModule, FormsModule, ReactiveFormsModule // Estes para que quem improtar o modulo, nao precise REimportar
   ]
 })

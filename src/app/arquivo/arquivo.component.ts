@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ArquivoService } from '../services/arquivo.service';
 import { NotificationService } from '../shared/messages/notification.service';
-import { Chart } from 'chart.js';
+import { ChartDataSets, ChartOptions } from 'chart.js';
+import { Color, BaseChartDirective, Label } from 'ng2-charts';
+import { ChartErrorEvent, ChartEvent } from 'angular-google-charts';
+
+
+// import * as pluginAnnotations from 'chartjs-plugin-annotation';
 
 
 @Component({
@@ -14,15 +19,42 @@ import { Chart } from 'chart.js';
 export class ArquivoComponent implements OnInit {
 
   constructor(
-    private arquivoService: ArquivoService, 
+    private arquivoService: ArquivoService,
     private notification: NotificationService
     )  { }
 
-  private arquivos = [];
+  public arquivos = [];
+  public arquivo: any;
   private carregandoLista:boolean = false;
   private subindoArquivo: boolean = false;
-  private dadosGrafico1 = [];
-  private grafico1 = [];
+
+
+  // Google charts
+  public chart_options: any= {
+    title: 'Grafico de Aceleração',
+    hAxis: {title: 'Aceleração',  titleTextStyle: {color: '#333'},
+              slantedText:true, slantedTextAngle:80},
+    vAxis: {minValue: 0},
+    explorer: {
+      actions: ['dragToZoom', 'rightClickToReset'],
+      axis: 'horizontal',
+      keepInBounds: true,
+      maxZoomIn: 4.0},
+    colors: ['#D44E41'],
+
+  };
+  public chart_title = 'Grafico';
+  public chart_type = 'LineChart';
+  public chart_columnNames = ["","Aceleracao"];
+  public chart_roles = [
+    // { type: 'number', role: 'interval' },
+    // { type: 'number', role: 'interval' },
+    // { type: 'boolean', role: 'certainty' }
+  ];
+  public chart_data = [
+    ["1",  1]
+ ];
+
 
   ngOnInit() {
 
@@ -40,7 +72,7 @@ export class ArquivoComponent implements OnInit {
           this.notification.notify("Erro ao buscar os Arquivos");
         }
       )
-      
+
 
   }
 
@@ -62,40 +94,15 @@ export class ArquivoComponent implements OnInit {
     }
   }
 
+
   grafico(arquivo: any){
-    this.grafico1 = null
+    this.arquivo = arquivo;
+    this.chart_data = [];
     this.arquivoService.buscaLeituras(arquivo.id).subscribe(
       dados=> {
-        this.dadosGrafico1 = dados.leituras;
-        console.log(this.dadosGrafico1);
-        this.grafico1 = new Chart('canvas', {
-          type: 'line',
-          data: {
-            labels: "",
-            datasets: [
-              {
-                data: this.dadosGrafico1,
-                borderColor: '#3cba9f',
-                fill: false
-              }
-            ]
-          },
-          options: {
-            legend: {
-              display: false
-            },
-            scales: {
-              xAxes: [{
-                display: true
-              }],
-              yAxes: [{
-                display: true
-              }],
-            }
-          }
-        });
-      
-   
+
+        this.chart_data =  dados.leituras.map(i => [i.registro, Number(i.valor) - dados.media]);
+
       }
       ,error => {
         this.notification.notify("Erro ao buscar os dados")
@@ -103,7 +110,27 @@ export class ArquivoComponent implements OnInit {
         console.log(error);
       }
     )
-  
+
+  }
+
+  onReady() {
+    console.log('Chart ready');
+  }
+
+  onError(error: ChartErrorEvent) {
+    console.error('Error: ' + error.message.toString());
+  }
+
+  onSelect(event: ChartEvent) {
+    console.log('Selected: ' + event.toString());
+  }
+
+  onMouseEnter(event: ChartEvent) {
+    console.log('Hovering ' + event.toString());
+  }
+
+  onMouseLeave(event: ChartEvent) {
+    console.log('No longer hovering ' + event.toString());
   }
 
 }

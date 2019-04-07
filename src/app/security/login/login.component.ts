@@ -34,8 +34,12 @@ export class LoginComponent implements OnInit {
       password: this.fb.control('',[Validators.required]),
 
     });
-    this.navigateTo = this.activtedRoute.snapshot.params['to'] || btoa('/');
-
+    
+    if( this.loginService.isLoggedIn &&  this.activtedRoute.snapshot.routeConfig.path === 'login')
+      this.router.navigate(['/']);
+    else
+      this.navigateTo = this.activtedRoute.snapshot.params['to'] || btoa('/');
+    
   }
 
   login(){
