@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BlocoService } from '../../services/bloco.service';
 import {Bloco} from '../../model/bloco.model';
 import { NotificationService } from '../../shared/messages/notification.service';
+import { ConfirmDialogService } from '../../shared/confirm-dialog/confirm-dialog.service';
 
 @Component({
   selector: 'app-listagem',
@@ -14,7 +15,8 @@ export class ListagemComponent implements OnInit {
 
   constructor( private blocoService: BlocoService,
     private notification: NotificationService,
-    private router: Router) { }
+    private router: Router,
+    private confirmService: ConfirmDialogService) { }
 
 
   private blocos: Bloco[];
@@ -30,6 +32,15 @@ export class ListagemComponent implements OnInit {
 
   editar(bloco: Bloco){
     this.router.navigate(['/blocos/cadastro/'+bloco.id]);
+  }
+
+  excluir(bloco: Bloco){
+    this.confirmService.confirm('Confirmação de exclusão',`Tem certeza que deseja remover o bloco ${bloco.codigo} ?`, 'Excluir','Voltar','lg')
+    .then((confirmed) => {
+      console.log('User confirmed:', confirmed);
+      alert("FODEU");
+    })
+    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   }
 
   buscaBlocos(parametro: string){
