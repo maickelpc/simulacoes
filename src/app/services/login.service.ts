@@ -91,7 +91,7 @@ export class LoginService{
         //window.sessionStorage.setItem('loggedUser', JSON.stringify(user))
 
         this.imageUser(this.loggedUser.id, this.loggedUser.access).subscribe();
-
+        this.router.navigate(['/'])
       });
     }
 

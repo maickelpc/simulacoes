@@ -18,7 +18,10 @@ import { LoginComponent } from './security/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { SharedModule} from './shared/shared.module';
 import { ProfileComponent } from './admin/profile/profile.component';
-import { ArquivoComponent } from './arquivo/arquivo.component'
+import { ArquivoComponent } from './arquivo/arquivo.component';
+import { BlocoComponent } from './bloco/bloco.component';
+import { ListagemComponent } from './bloco/listagem/listagem.component';
+import { CadastroComponent } from './bloco/cadastro/cadastro.component'
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { ArquivoComponent } from './arquivo/arquivo.component'
     LoginComponent,
     HomeComponent,
     ProfileComponent,
-    ArquivoComponent
+    ArquivoComponent,
+    BlocoComponent,
+    ListagemComponent,
+    CadastroComponent
   ],
   imports: [
     FormsModule,

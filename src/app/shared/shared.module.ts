@@ -16,6 +16,7 @@ import { UserService } from '../services/user.service'
 import { SnackbarComponent } from './messages/snackbar/snackbar.component'
 import { LoggedInGuard } from '../security/loggedin.guard';
 import { ArquivoService } from '../services/arquivo.service';
+import { BlocoService } from '../services/bloco.service';
 
 
 
@@ -37,6 +38,7 @@ export class SharedModule{
         LoginService,
         UserService,
         ArquivoService,
+        BlocoService,
         SnackbarComponent,
         NotificationService,
         LoggedInGuard

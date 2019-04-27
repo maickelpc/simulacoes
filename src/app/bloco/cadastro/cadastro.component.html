@@ -1,0 +1,70 @@
+<div class="box box-default">
+        <div class="box-header with-border">
+          <h3 class="box-title">{{(edicao) ? 'Edição bloco: ' : 'Novo Registro'}} {{(edicao) ? bloco.codigo : ''}}</h3>
+
+          <div class="box-tools pull-right">
+            <button class="btn btn-box-tool" (click)="cancelar()"
+              style="margin-left: 10px; margin-right: 10px; min-width: 150px" type="button">
+              Voltar
+            </button>
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <form name="cadastro" [formGroup]="cadastroForm" novalidate>
+          <div class="row">
+            <div class="col-md-6">
+              <app-input label="Descrição" errorMessage="Campo obrigatório">
+                <label>Id</label>
+                <input readonly="true" disabled="true" type="text" formControlName="id" [ngModel]="bloco.id" class="form-control" style="width: 100%;"/>
+              </app-input>
+            </div>
+            <div class="col-md-6">
+              <app-input label="Descrição" errorMessage="Campo obrigatório">
+                <label>Codigo</label>
+                <input type="text" formControlName="codigo" [(ngModel)]="bloco.codigo" class="form-control" style="width: 100%;"/>
+              </app-input>
+            </div>
+            <!-- /.col -->
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <app-input label="Descrição" errorMessage="Campo obrigatório">
+                <label>Descrição</label>
+                <input type="text" formControlName="descricao" [(ngModel)]="bloco.descricao" class="form-control" style="width: 100%;"/>
+              </app-input>
+            </div>
+            <div class="col-md-6">
+              <app-input label="Descrição" errorMessage="Campo obrigatório">
+                <label>Localização</label>
+                <input type="text" formControlName="localizacao" [(ngModel)]="bloco.localizacao" class="form-control" style="width: 100%;"/>
+              </app-input>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group" style="text-align: center">
+                <button class="btn bg-navy btn-flat margin" [disabled]="!cadastroForm.valid"
+                  (click)="salvar()"
+                  style="margin-left: 10px; margin-right: 10px; min-width: 150px" type="button">
+                  <span class="glyphicon glyphicon-ok"></span> Salvar
+                </button>
+                <button class="btn bg-navy btn-flat margin" (click)="cancelar()"
+                  style="margin-left: 10px; margin-right: 10px; min-width: 150px" type="button">
+                  <span class="glyphicon glyphicon-remove"></span> Cancelar
+                </button>
+              </div>
+            </div>
+
+          </div>
+          </form>
+
+
+        </div>
+
+
+      </div>
+      <!-- /.box -->
