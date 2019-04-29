@@ -16,26 +16,27 @@ import { SnackbarComponent } from './messages/snackbar/snackbar.component'
 import { LoggedInGuard } from '../security/loggedin.guard';
 import { ArquivoService } from '../services/arquivo.service';
 import { BlocoService } from '../services/bloco.service';
-import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
-import {ConfirmDialogService} from './confirm-dialog/confirm-dialog.service';
+import {DeleteConfirmDialogComponent} from './delete-confirm-dialog/delete-confirm-dialog.component';
+
 
 
 
 
 @NgModule({
-  declarations: [InputComponent, RadioComponent, SnackbarComponent, ConfirmDialogComponent],
+  declarations: [InputComponent, RadioComponent, SnackbarComponent, DeleteConfirmDialogComponent],
   imports:[CommonModule,
     FormsModule,
-    ReactiveFormsModule,
+  //  ReactiveFormsModule,
     ChartsModule,
     GoogleChartsModule,
     NgbModule
   ],
   exports:[
-    InputComponent, RadioComponent,SnackbarComponent, ConfirmDialogComponent, ChartsModule,GoogleChartsModule,
-    CommonModule, FormsModule, ReactiveFormsModule,NgbModule // Estes para que quem improtar o modulo, nao precise REimportar
+    InputComponent, RadioComponent,SnackbarComponent, DeleteConfirmDialogComponent, ChartsModule,GoogleChartsModule,
+    CommonModule, FormsModule
+    //ReactiveFormsModule // Estes para que quem improtar o modulo, nao precise REimportar
   ],
-  entryComponents: [ ConfirmDialogComponent ]
+  entryComponents: [ DeleteConfirmDialogComponent ]
 })
 
 export class SharedModule{
@@ -49,8 +50,7 @@ export class SharedModule{
         BlocoService,
         SnackbarComponent,
         NotificationService,
-        LoggedInGuard,
-        ConfirmDialogService
+        LoggedInGuard
       ],
 
     }

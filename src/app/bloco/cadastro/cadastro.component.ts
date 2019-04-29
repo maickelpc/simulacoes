@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router} from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+// import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { BlocoService } from '../../services/bloco.service';
 import {Bloco} from '../../model/bloco.model';
@@ -16,13 +16,11 @@ export class CadastroComponent implements OnInit {
   constructor(private blocoService: BlocoService,
     private notification: NotificationService,
     private route : ActivatedRoute,
-    private router : Router,
-    private formBuilder: FormBuilder) { }
+    private router : Router) { }
 
     private bloco :Bloco;
     private edicao :boolean;
 
-    cadastroForm: FormGroup;
 
   ngOnInit() {
 
@@ -42,12 +40,6 @@ export class CadastroComponent implements OnInit {
       );
     }
 
-    this.cadastroForm = this.formBuilder.group({
-    //  id: this.formBuilder.control('',[]),
-      codigo: this.formBuilder.control('',[Validators.required]),
-      descricao: this.formBuilder.control('',[Validators.required]),
-      localizacao: this.formBuilder.control('',[Validators.required])
-    });
 
   }
 
