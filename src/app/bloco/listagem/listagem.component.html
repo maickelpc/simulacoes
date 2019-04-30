@@ -8,7 +8,6 @@
       </div>
     </div>
   </div>
-
 </div>
 
 <!-- /.box-header -->
@@ -32,8 +31,13 @@
           (click)="editar(bloco)">
           <span class="glyphicon glyphicon-pencil"></span>
         </button>
+
         <button type="button" class="btn btn-danger btn-sm" style="margin-left:5px "
-          (click)="excluir(bloco)">
+          mwlConfirmationPopover
+          [popoverTitle]="xxxyyy"
+          [popoverMessage]="xxx"
+          placement="left"
+          (confirm)="excluir(bloco)">
           <span class="glyphicon glyphicon-remove"></span>
         </button>
       </td>

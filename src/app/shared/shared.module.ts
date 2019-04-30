@@ -7,7 +7,6 @@ import { GoogleChartsModule } from 'angular-google-charts';
 import {InputComponent} from './input/input.component'
 import {RadioComponent} from './radio/radio.component'
 import { NotificationService } from './messages/notification.service'
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 //Servicos
 import { LoginService } from '../services/login.service';
@@ -16,27 +15,30 @@ import { SnackbarComponent } from './messages/snackbar/snackbar.component'
 import { LoggedInGuard } from '../security/loggedin.guard';
 import { ArquivoService } from '../services/arquivo.service';
 import { BlocoService } from '../services/bloco.service';
-import {DeleteConfirmDialogComponent} from './delete-confirm-dialog/delete-confirm-dialog.component';
+import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
+import { ConfirmationPopoverModule} from 'angular-confirmation-popover'
+
 
 
 
 
 
 @NgModule({
-  declarations: [InputComponent, RadioComponent, SnackbarComponent, DeleteConfirmDialogComponent],
+  declarations: [InputComponent, RadioComponent, SnackbarComponent,ConfirmDialogComponent ],
   imports:[CommonModule,
     FormsModule,
   //  ReactiveFormsModule,
     ChartsModule,
     GoogleChartsModule,
-    NgbModule
+    ConfirmationPopoverModule.forRoot({confirmButtonType:'danger'})
   ],
   exports:[
-    InputComponent, RadioComponent,SnackbarComponent, DeleteConfirmDialogComponent, ChartsModule,GoogleChartsModule,
-    CommonModule, FormsModule
+    InputComponent, RadioComponent,SnackbarComponent, ConfirmDialogComponent,
+    ChartsModule,GoogleChartsModule,
+    CommonModule, FormsModule, ConfirmationPopoverModule
     //ReactiveFormsModule // Estes para que quem improtar o modulo, nao precise REimportar
   ],
-  entryComponents: [ DeleteConfirmDialogComponent ]
+  entryComponents: [ ConfirmDialogComponent ]
 })
 
 export class SharedModule{

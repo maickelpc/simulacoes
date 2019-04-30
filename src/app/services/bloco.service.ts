@@ -55,6 +55,12 @@ export class BlocoService{
     return this.http.put<Bloco>(url, bloco ,{headers: this.getHeaders()} );
   }
 
+  excluir (bloco : Bloco): Observable<any>{
+    let url = `${API}/bloco/${bloco.id}/`;
+    return this.http.delete<any>(url, {headers: this.getHeaders()} );
+  }
+
+
 
   //
   // buscaLeituras (idArquivo: number): Observable<any>{
