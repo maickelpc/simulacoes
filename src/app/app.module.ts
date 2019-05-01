@@ -21,7 +21,12 @@ import { ProfileComponent } from './admin/profile/profile.component';
 import { ArquivoComponent } from './arquivo/arquivo.component';
 import { BlocoComponent } from './bloco/bloco.component';
 import { ListagemComponent } from './bloco/listagem/listagem.component';
-import { CadastroComponent } from './bloco/cadastro/cadastro.component'
+import { CadastroComponent } from './bloco/cadastro/cadastro.component';
+import { CadastroAcelerometroComponent } from './bloco/cadastro-acelerometro/cadastro-acelerometro.component';
+import { ListagemAcelerometroComponent } from './bloco/listagem-acelerometro/listagem-acelerometro.component';
+import { LeituraComponent } from './leitura/leitura.component'
+import { EnvioArquivoBlocoComponent } from './leitura/envio-arquivo-bloco/envio-arquivo-bloco.component';
+import { ListagemLeituraBlocoComponent } from './leitura/listagem-leitura-bloco/listagem-leitura-bloco.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +41,12 @@ import { CadastroComponent } from './bloco/cadastro/cadastro.component'
     ArquivoComponent,
     BlocoComponent,
     ListagemComponent,
-    CadastroComponent
+    CadastroComponent,
+    CadastroAcelerometroComponent,
+    ListagemAcelerometroComponent,
+    LeituraComponent,
+    EnvioArquivoBlocoComponent,
+    ListagemLeituraBlocoComponent
   ],
   imports: [
     FormsModule,

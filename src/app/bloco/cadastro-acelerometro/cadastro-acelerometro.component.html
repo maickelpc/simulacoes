@@ -1,6 +1,6 @@
 <div class="box box-default">
         <div class="box-header with-border">
-          <h3 class="box-title">{{(edicao) ? 'Edição bloco: ' : 'Novo Registro'}} {{(edicao) ? bloco.codigo : ''}}</h3>
+          <h3 class="box-title">{{(edicao) ? 'Edição Acelerometro: ' : 'Novo Registro'}} {{(edicao) ? acelerometro.codigo : ''}}</h3>
 
           <div class="box-tools pull-right">
             <button class="btn btn-box-tool" (click)="cancelar()"
@@ -15,23 +15,30 @@
         <div class="box-body">
           <form #cadastroForm="ngForm" novalidate>
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
               <app-input label="Descrição" errorMessage="Campo obrigatório">
                 <label>Id</label>
-                <input readonly="true" type="text" name="id" [ngModel]="bloco.id" class="form-control" style="width: 100%;"/>
+                <input readonly="true" type="text" name="id" [ngModel]="acelerometro.id" class="form-control" style="width: 100%;"/>
               </app-input>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
               <app-input label="Descrição" errorMessage="Campo obrigatório">
                 <label>Codigo</label>
-                <input type="text" required="required" name="codigo" [(ngModel)]="bloco.codigo" class="form-control" style="width: 100%;"/>
+                <input type="text" required="required" name="codigo" [(ngModel)]="acelerometro.codigo" class="form-control" style="width: 100%;"/>
               </app-input>
             </div>
-
-            <div class="col-md-4">
+          </div>
+          <div clas="row">
+            <div class="col-md-6">
               <app-input label="Descrição" errorMessage="Campo obrigatório">
                 <label>Descrição</label>
-                <input type="text" required="required" name="descricao" [(ngModel)]="bloco.descricao" class="form-control" style="width: 100%;"/>
+                <input type="text" required="required" name="descricao" [(ngModel)]="acelerometro.descricao" class="form-control" style="width: 100%;"/>
+              </app-input>
+            </div>
+            <div class="col-md-6">
+              <app-input label="Descrição" errorMessage="Campo obrigatório">
+                <label>Localização</label>
+                <input type="text" required="required" name="descricao" [(ngModel)]="acelerometro.localizacao" class="form-control" style="width: 100%;"/>
               </app-input>
             </div>
             <!-- /.col -->

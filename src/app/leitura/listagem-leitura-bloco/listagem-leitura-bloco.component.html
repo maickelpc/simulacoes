@@ -1,0 +1,50 @@
+<div class="box-header">
+  <h3 class="box-title">Acelerômetros</h3>
+  <div class="box-tools">
+    <div class="input-group input-group-sm" style="width: 300px;">
+      <input type="text" name="search" [(ngModel)]="search" class="form-control pull-right" placeholder="Busca">
+      <div class="input-group-btn">
+        <button type="button" (click)="buscaAcelerometros(search)" class="btn btn-default"><i class="fa fa-search"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- /.box-header -->
+<div class="box-body table-responsive no-padding">
+  <table class="table table-hover">
+    <tr>
+      <th>ID</th>
+      <th>Código</th>
+      <th>Descrição</th>
+      <th>Localização</th>
+      <th>Ação</th>
+    </tr>
+
+    <tr *ngFor="let acelerometro of acelerometros">
+      <td>{{acelerometro.id}}</td>
+      <td>{{acelerometro.codigo}}</td>
+      <td>{{acelerometro.descricao}}</td>
+      <td>{{acelerometro.localizacao}}</td>
+      <td>
+        <button type="button" class="btn btn-info btn-sm" style="margin-left:5px "
+          (click)="editar(acelerometro)" data-toggle="tooltip" data-placement="bottom" title="Ver lançamentos">
+          <span class="glyphicon glyphicon-th-list"></span>
+        </button>
+
+        <button type="button" class="btn btn-primary btn-sm" style="margin-left:5px"
+        (click)="enviarArquivo(acelerometro)" data-toggle="tooltip" data-placement="bottom" title="Enviar arquivo">
+          <span class="glyphicon glyphicon-upload"></span>
+        </button>
+      </td>
+    </tr>
+
+  </table>
+
+  <button type="button" class="btn btn-primary btn-sm" style="margin-left:5px; margin-top:10px"
+    (click)="enviarArquivo()">
+    <span class="glyphicon glyphicon-plus"></span>Novo
+  </button>
+
+</div>
+<!-- /.box-body -->

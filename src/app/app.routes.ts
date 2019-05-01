@@ -9,6 +9,11 @@ import { ArquivoComponent } from './arquivo/arquivo.component';
 import { BlocoComponent } from './bloco/bloco.component';
 import { CadastroComponent } from './bloco/cadastro/cadastro.component';
 import { ListagemComponent } from './bloco/listagem/listagem.component';
+import { CadastroAcelerometroComponent } from './bloco/cadastro-acelerometro/cadastro-acelerometro.component';
+import { ListagemAcelerometroComponent } from './bloco/listagem-acelerometro/listagem-acelerometro.component';
+import { LeituraComponent } from './leitura/leitura.component';
+import { EnvioArquivoBlocoComponent } from './leitura/envio-arquivo-bloco/envio-arquivo-bloco.component';
+import { ListagemLeituraBlocoComponent } from './leitura/listagem-leitura-bloco/listagem-leitura-bloco.component';
 
 export const ROUTES: Routes = [
   {path: '', component: HomeComponent, canActivate:[LoggedInGuard]},
@@ -16,10 +21,21 @@ export const ROUTES: Routes = [
   {
     path: 'blocos', component: BlocoComponent, canActivate:[LoggedInGuard],
     children:[
-      {path: '', redirectTo:'listagem', pathMatch:'full'},
+      {path: '', component: ListagemComponent, canActivate:[LoggedInGuard]},
       {path: 'cadastro/:id', component: CadastroComponent, canActivate:[LoggedInGuard]},
       {path: 'cadastro', component: CadastroComponent, canActivate:[LoggedInGuard]},
       {path: 'listagem', component: ListagemComponent, canActivate:[LoggedInGuard]},
+      {path: 'acelerometros', component: ListagemAcelerometroComponent, canActivate:[LoggedInGuard]},
+      {path: 'acelerometros/cadastro/:id', component: CadastroAcelerometroComponent, canActivate:[LoggedInGuard]},
+      {path: 'acelerometros/cadastro', component: CadastroAcelerometroComponent, canActivate:[LoggedInGuard]}
+    ]
+  },
+  {
+    path: 'leitura', component: LeituraComponent, canActivate:[LoggedInGuard],
+    children:[
+      {path: '', component: ListagemLeituraBlocoComponent, canActivate:[LoggedInGuard]},
+      {path: 'envio/:id', component: EnvioArquivoBlocoComponent, canActivate:[LoggedInGuard]},
+      {path: 'envio', component: EnvioArquivoBlocoComponent, canActivate:[LoggedInGuard]}
     ]
   },
   {path: 'profile', component: ProfileComponent, canActivate:[LoggedInGuard]},
@@ -27,5 +43,3 @@ export const ROUTES: Routes = [
   {path: 'login', component: LoginComponent},
   //{path: 'home', loadChildren:'./home/home.component#HomeComponent', canLoad:[LoggedInGuard]},
 ]
-
-export const API = 'http://ceasb.maicke.site';

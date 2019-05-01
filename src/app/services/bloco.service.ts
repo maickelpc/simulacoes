@@ -8,7 +8,7 @@ import { LoginService } from './login.service'
 
 import { API } from '../app.config'
 import { identifierModuleUrl } from '@angular/compiler';
-import { Bloco } from '../model/bloco.model';
+import { Bloco, Acelerometro } from '../model/bloco.model';
 
 @Injectable()
 export class BlocoService{
@@ -59,6 +59,40 @@ export class BlocoService{
     let url = `${API}/bloco/${bloco.id}/`;
     return this.http.delete<any>(url, {headers: this.getHeaders()} );
   }
+
+
+  buscaAcelerometros (parametro: string): Observable<any>{
+
+    let url = `${API}/acelerometro/`;
+    if(parametro.length > 0)
+      url += "?search="+parametro
+    return this.http.get<any>(url, {headers: this.getHeaders()} );
+
+  }
+
+  buscaAcelerometroPorId (parametro: number): Observable<Acelerometro>{
+
+    let url = `${API}/acelerometro/${parametro}/`;
+    return this.http.get<any>(url, {headers: this.getHeaders()} );
+
+  }
+
+  salvarAcelerometro (acelerometro : Acelerometro): Observable<any>{
+    let url = `${API}/acelerometro/`;
+    console.log(acelerometro);
+    return this.http.post<Acelerometro>(url, acelerometro ,{headers: this.getHeaders()} );
+  }
+
+  atualizarAcelerometro (acelerometro : Acelerometro): Observable<any>{
+    let url = `${API}/acelerometro/${acelerometro.id}/`;
+    return this.http.put<Acelerometro>(url, acelerometro ,{headers: this.getHeaders()} );
+  }
+
+  excluirAcelerometro (acelerometro : Acelerometro): Observable<any>{
+    let url = `${API}/acelerometro/${acelerometro.id}/`;
+    return this.http.delete<any>(url, {headers: this.getHeaders()} );
+  }
+
 
 
 

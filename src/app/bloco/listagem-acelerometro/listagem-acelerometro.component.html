@@ -1,10 +1,10 @@
 <div class="box-header">
-  <h3 class="box-title">Blocos</h3>
+  <h3 class="box-title">Acelerômetros</h3>
   <div class="box-tools">
     <div class="input-group input-group-sm" style="width: 300px;">
       <input type="text" name="search" [(ngModel)]="search" class="form-control pull-right" placeholder="Busca">
       <div class="input-group-btn">
-        <button type="button" (click)="buscaBlocos(search)" class="btn btn-default"><i class="fa fa-search"></i></button>
+        <button type="button" (click)="buscaAcelerometros(search)" class="btn btn-default"><i class="fa fa-search"></i></button>
       </div>
     </div>
   </div>
@@ -17,16 +17,18 @@
       <th>ID</th>
       <th>Código</th>
       <th>Descrição</th>
+      <th>Localização</th>
       <th>Ação</th>
     </tr>
 
-    <tr *ngFor="let bloco of blocos">
-      <td>{{bloco.id}}</td>
-      <td>{{bloco.codigo}}</td>
-      <td>{{bloco.descricao}}</td>
+    <tr *ngFor="let acelerometro of acelerometros">
+      <td>{{acelerometro.id}}</td>
+      <td>{{acelerometro.codigo}}</td>
+      <td>{{acelerometro.descricao}}</td>
+      <td>{{acelerometro.localizacao}}</td>
       <td>
         <button type="button" class="btn btn-info btn-sm" style="margin-left:5px "
-          (click)="editar(bloco)">
+          (click)="editar(acelerometro)">
           <span class="glyphicon glyphicon-pencil"></span>
         </button>
 
@@ -35,7 +37,7 @@
           [popoverTitle]="xxxyyy"
           [popoverMessage]="xxx"
           placement="left"
-          (confirm)="excluir(bloco)">
+          (confirm)="excluir(acelerometro)">
           <span class="glyphicon glyphicon-remove"></span>
         </button>
       </td>
@@ -43,7 +45,7 @@
 
   </table>
 
-  <button type="button" class="btn btn-primary btn-sm" style="margin-left:5px"
+  <button type="button" class="btn btn-primary btn-sm" style="margin-left:5px; margin-top:10px"
     (click)="novo()">
     <span class="glyphicon glyphicon-plus"></span>Novo
   </button>
