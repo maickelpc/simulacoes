@@ -28,6 +28,7 @@ import { LeituraComponent } from './leitura/leitura.component'
 import { EnvioArquivoBlocoComponent } from './leitura/envio-arquivo-bloco/envio-arquivo-bloco.component';
 import { ListagemLeituraBlocoComponent } from './leitura/listagem-leitura-bloco/listagem-leitura-bloco.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

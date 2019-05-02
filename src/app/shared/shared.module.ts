@@ -17,6 +17,7 @@ import { ArquivoService } from '../services/arquivo.service';
 import { BlocoService } from '../services/bloco.service';
 import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
 import { ConfirmationPopoverModule} from 'angular-confirmation-popover'
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 
 
 
@@ -30,12 +31,14 @@ import { ConfirmationPopoverModule} from 'angular-confirmation-popover'
   //  ReactiveFormsModule,
     ChartsModule,
     GoogleChartsModule,
-    ConfirmationPopoverModule.forRoot({confirmButtonType:'danger'})
+    ConfirmationPopoverModule.forRoot({confirmButtonType:'danger'}),
+    AutocompleteLibModule
   ],
   exports:[
     InputComponent, RadioComponent,SnackbarComponent, ConfirmDialogComponent,
     ChartsModule,GoogleChartsModule,
-    CommonModule, FormsModule, ConfirmationPopoverModule
+    CommonModule, FormsModule, ConfirmationPopoverModule,
+    AutocompleteLibModule
     //ReactiveFormsModule // Estes para que quem improtar o modulo, nao precise REimportar
   ],
   entryComponents: [ ConfirmDialogComponent ]

@@ -93,6 +93,21 @@ export class BlocoService{
     return this.http.delete<any>(url, {headers: this.getHeaders()} );
   }
 
+  enviaArquivo(dados : any): Observable<any>{
+    let url = `${API}/bloco/upload/`;
+
+    let headers = new HttpHeaders();
+    headers = headers.append('Authorization', 'Bearer '+ this.login.user().access);
+    // headers = headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    console.log(dados);
+    const formData = new FormData();
+    formData.append('arquivo', dados.arquivo);
+    formData.append('dataHoraInicio', dados.dataHoraInicio.toString());
+    formData.append('blocoId', dados.blocoId.toString());
+    formData.append('acelerometroId', dados.acelerometroId.toString());
+
+    return this.http.post(url, formData, {headers : headers})
+  }
 
 
 
