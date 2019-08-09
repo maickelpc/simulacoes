@@ -13,6 +13,7 @@ import { LoginService } from '../services/login.service';
 import { UserService } from '../services/user.service'
 import { SnackbarComponent } from './messages/snackbar/snackbar.component'
 import { LoggedInGuard } from '../security/loggedin.guard';
+import { FddService } from '../services/fdd.service';
 import { ArquivoService } from '../services/arquivo.service';
 import { BlocoService } from '../services/bloco.service';
 import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
@@ -55,7 +56,8 @@ export class SharedModule{
         BlocoService,
         SnackbarComponent,
         NotificationService,
-        LoggedInGuard
+        LoggedInGuard,
+        FddService
       ],
 
     }

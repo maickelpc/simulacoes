@@ -1,0 +1,114 @@
+<div class="content-wrapper">
+  <section class="content-header">
+    <h1>
+      Método FDD
+      <small></small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> FDD</a></li>
+      <li class="active">Arquivos</li>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+
+          <!-- /.box-header -->
+          <div class="box-body table-responsive no-padding">
+            <table class="table table-hover">
+              <tr>
+                <th>ID</th>
+                <th>Código</th>
+                <th>Data</th>
+                <th>Ação</th>
+              </tr>
+
+              <tr *ngFor="let arquivo of dados">
+                <td>{{arquivo.id}}</td>
+                <td>{{arquivo.codigo}}</td>
+                <td>{{arquivo.data | date: 'dd/MM/yyyy hh:mm:ss'}}</td>
+                <td>
+                  <button type="button" class="btn btn-primary btn-sm" style="margin-left:5px "
+                    (click)="visualizar(arquivo)">
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                  </button>
+
+                  <button type="button" class="btn btn-info btn-sm" style="margin-left:5px "
+                    (click)="editar(arquivo)">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                  </button>
+
+                  <button type="button" class="btn btn-danger btn-sm" style="margin-left:5px "
+                    mwlConfirmationPopover
+                    [popoverTitle]="'Confirmação de Remoção'"
+                    [popoverMessage]="'Tem Certeza que deseja remover este arquivo?'"
+                    placement="left"
+                    (confirm)="excluir(arquivo)">
+                    <span class="glyphicon glyphicon-remove"></span>
+                  </button>
+                </td>
+              </tr>
+
+            </table>
+            </div>
+
+            <!-- MAP & BOX PANE -->
+          <div class="box box-success" [hidden]="arquivoVisualizar == null">
+            <div class="box-header with-border">
+              <h3 class="box-title">Visualização de grafico FDD</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <div class="row">
+                <div class="col-md-12 col-sm-12">
+              <form role="form">
+                 <div class="row">
+                   <div class="col col-md-3">
+                     <div class="form-group">
+                       <label>Graus</label>
+                       <input name="graus" [(ngModel)]="registro.graus" type="text" class="form-control" placeholder="Graus">
+                     </div>
+                   </div>
+                   <div class="col col-md-3">
+                     <div class="form-group">
+                       <label>Dominio</label>
+                       <input name="dominio" [(ngModel)]="registro.dominio" type="text" class="form-control" placeholder="Dominio">
+                     </div>
+                   </div>
+                   <div class="col col-md-3">
+                     <div class="form-group">
+                       <label>Fourier</label>
+                       <input name="fourier" [(ngModel)]="registro.fourier" type="text" class="form-control" placeholder="Fourier">
+                     </div>
+                   </div>
+                   <div class="col col-md-3">
+                     <button class="btn btn-block btn-primary" (click)="buscarDadosGrafico()">Apresentar Grafico</button>
+                   </div>
+                 </div>
+
+               </form>
+
+
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 col-sm-12">
+                    {{dadosGrafico | json}}
+                    </div>
+                  </div>
+
+                  </div>
+                </div>
+
+
+        </div>
+        <!-- /.box -->
+      </div>
+    </div>
+  </section>
+  <!-- /.content -->
+</div>

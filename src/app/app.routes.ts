@@ -14,6 +14,8 @@ import { ListagemAcelerometroComponent } from './bloco/listagem-acelerometro/lis
 import { LeituraComponent } from './leitura/leitura.component';
 import { EnvioArquivoBlocoComponent } from './leitura/envio-arquivo-bloco/envio-arquivo-bloco.component';
 import { ListagemLeituraBlocoComponent } from './leitura/listagem-leitura-bloco/listagem-leitura-bloco.component';
+import { FddComponent } from './fdd/fdd.component'
+
 
 export const ROUTES: Routes = [
   {path: '', component: HomeComponent, canActivate:[LoggedInGuard]},
@@ -38,8 +40,8 @@ export const ROUTES: Routes = [
       {path: 'envio', component: EnvioArquivoBlocoComponent, canActivate:[LoggedInGuard]}
     ]
   },
+  {path: 'fdd', component: FddComponent, canActivate:[LoggedInGuard]},
   {path: 'profile', component: ProfileComponent, canActivate:[LoggedInGuard]},
   {path: 'login/:to', component: LoginComponent},
   {path: 'login', component: LoginComponent},
-  //{path: 'home', loadChildren:'./home/home.component#HomeComponent', canLoad:[LoggedInGuard]},
 ]

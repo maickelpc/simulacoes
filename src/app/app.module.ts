@@ -27,6 +27,8 @@ import { ListagemAcelerometroComponent } from './bloco/listagem-acelerometro/lis
 import { LeituraComponent } from './leitura/leitura.component'
 import { EnvioArquivoBlocoComponent } from './leitura/envio-arquivo-bloco/envio-arquivo-bloco.component';
 import { ListagemLeituraBlocoComponent } from './leitura/listagem-leitura-bloco/listagem-leitura-bloco.component';
+import { FddComponent } from './fdd/fdd.component';
+import { FddService } from './services/fdd.service'
 
 
 @NgModule({
@@ -47,7 +49,8 @@ import { ListagemLeituraBlocoComponent } from './leitura/listagem-leitura-bloco/
     ListagemAcelerometroComponent,
     LeituraComponent,
     EnvioArquivoBlocoComponent,
-    ListagemLeituraBlocoComponent
+    ListagemLeituraBlocoComponent,
+    FddComponent
   ],
   imports: [
     FormsModule,
