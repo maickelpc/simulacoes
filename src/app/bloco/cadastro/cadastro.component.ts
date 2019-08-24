@@ -18,8 +18,8 @@ export class CadastroComponent implements OnInit {
     private route : ActivatedRoute,
     private router : Router) { }
 
-    private bloco :Bloco;
-    private edicao :boolean;
+    bloco :Bloco;
+    edicao :boolean;
 
 
   ngOnInit() {

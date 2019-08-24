@@ -15,6 +15,7 @@ import { LeituraComponent } from './leitura/leitura.component';
 import { EnvioArquivoBlocoComponent } from './leitura/envio-arquivo-bloco/envio-arquivo-bloco.component';
 import { ListagemLeituraBlocoComponent } from './leitura/listagem-leitura-bloco/listagem-leitura-bloco.component';
 import { FddComponent } from './fdd/fdd.component'
+import { FddFormComponent } from './fdd/fdd-form/fdd-form.component'
 
 
 export const ROUTES: Routes = [
@@ -41,6 +42,7 @@ export const ROUTES: Routes = [
     ]
   },
   {path: 'fdd', component: FddComponent, canActivate:[LoggedInGuard]},
+  {path: 'fdd/novo', component: FddFormComponent, canActivate:[LoggedInGuard]},
   {path: 'profile', component: ProfileComponent, canActivate:[LoggedInGuard]},
   {path: 'login/:to', component: LoginComponent},
   {path: 'login', component: LoginComponent},

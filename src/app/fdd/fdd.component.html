@@ -16,6 +16,19 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="box">
+          <div class="input-group input-group-sm">
+            <span class="input-group-btn">
+              <button (click)="adicionar()" type="button" class="btn btn-info btn-flat">
+                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                Adicionar</button>
+            </span>
+                <input type="text" class="form-control">
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-info btn-flat">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        Buscar</button>
+                    </span>
+              </div>
 
           <!-- /.box-header -->
           <div class="box-body table-responsive no-padding">
@@ -23,14 +36,18 @@
               <tr>
                 <th>ID</th>
                 <th>Código</th>
-                <th>Data</th>
+                <th>Descrição</th>
+                <th>Data Início</th>
+                <th>Frequencia</th>
                 <th>Ação</th>
               </tr>
 
               <tr *ngFor="let arquivo of dados">
                 <td>{{arquivo.id}}</td>
                 <td>{{arquivo.codigo}}</td>
-                <td>{{arquivo.data | date: 'dd/MM/yyyy hh:mm:ss'}}</td>
+                <td>{{arquivo.descricao}}</td>
+                <td>{{arquivo.dataInicio | date: 'dd/MM/yyyy hh:mm:ss'}}</td>
+                <td>{{arquivo.frequencia}}Hz</td>
                 <td>
                   <button type="button" class="btn btn-primary btn-sm" style="margin-left:5px "
                     (click)="visualizar(arquivo)">
@@ -57,32 +74,28 @@
             </div>
 
             <!-- MAP & BOX PANE -->
-          <div class="box box-success" [hidden]="arquivoVisualizar == null">
+          <div class="box box-success" *ngIf="arquivoVisualizar != null">
             <div class="box-header with-border">
               <h3 class="box-title">Visualização de grafico FDD</h3>
             </div>
             <!-- /.box-header -->
+            MATRIZ: {{matriz}}
             <div class="box-body no-padding">
               <div class="row">
                 <div class="col-md-12 col-sm-12">
               <form role="form">
                  <div class="row">
-                   <div class="col col-md-3">
+                   <div class="col col-md-6">
                      <div class="form-group">
-                       <label>Graus</label>
-                       <input name="graus" [(ngModel)]="registro.graus" type="text" class="form-control" placeholder="Graus">
-                     </div>
-                   </div>
-                   <div class="col col-md-3">
-                     <div class="form-group">
-                       <label>Dominio</label>
-                       <input name="dominio" [(ngModel)]="registro.dominio" type="text" class="form-control" placeholder="Dominio">
+                       <label>Canais a analisar (máximo: {{arquivoVisualizar.canais}})</label>
+                       <input name="graus" [(ngModel)]="arquivoVisualizar.analisar"  type="number" [max]="arquivoVisualizar.canais"
+                        class="form-control" placeholder="Canais a analisar">
                      </div>
                    </div>
                    <div class="col col-md-3">
                      <div class="form-group">
                        <label>Fourier</label>
-                       <input name="fourier" [(ngModel)]="registro.fourier" type="text" class="form-control" placeholder="Fourier">
+                       <input name="fourier" [(ngModel)]="arquivoVisualizar.fourier" type="text" class="form-control" placeholder="Fourier">
                      </div>
                    </div>
                    <div class="col col-md-3">
@@ -97,6 +110,20 @@
                 </div>
                 <div class="row">
                   <div class="col-md-12 col-sm-12">
+                    <google-chart width="800"
+                        [title]="chart_title"
+                        [type]="chart_type"
+                        [data]="dadosGrafico"
+                        [columnNames]="chart_columnNames"
+                        [roles]="chart_roles"
+                        [options]="chart_options"
+                        (ready)="onReady()"
+                        (select)="onSelect($event)"
+                        (error)="onError($event)"
+                        (mouseenter)="onMouseEnter($event)"
+                        (mouseleave)="onMouseLeave($event)">
+                      </google-chart>
+
                     {{dadosGrafico | json}}
                     </div>
                   </div>

@@ -22,8 +22,8 @@ export class ListagemComponent implements OnInit {
     public confirmClicked: boolean = false;
     public cancelClicked: boolean = false;
 
-  private blocos: Bloco[];
-  public search: string;
+  blocos: Bloco[];
+  search: string;
 
   ngOnInit() {
     this.buscaBlocos('');

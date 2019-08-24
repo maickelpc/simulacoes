@@ -35,21 +35,29 @@ export class FddService{
 
   }
 
+  buscarArquivoPorId(id): Observable<any>{
+
+    let url = `${API}/fdd/arquivo/${id}`;
+    return this.http.get<any>(url, {headers: this.getHeaders()} );
+
+  }
+
   listarDadosGrafico(grafico): Observable<any>{
 
     let url = `${API}/fdd/arquivo/grafico/`;
     const formData = new FormData();
+
     formData.append('id', grafico.id);
     formData.append('fourier', grafico.fourier);
-    formData.append('graus', grafico.graus);
-    formData.append('dominio', grafico.dominio);
+    formData.append('analisar', grafico.analisar);
+    
 
     return this.http.post<any>(url, grafico ,{headers: this.getHeaders()} );
 
   }
 
   enviaArquivo(dados : any): Observable<any>{
-    let url = `${API}/bloco/upload/`;
+    let url = `${API}/fdd/arquivo/`;
 
     let headers = new HttpHeaders();
     headers = headers.append('Authorization', 'Bearer '+ this.login.user().access);
@@ -57,8 +65,11 @@ export class FddService{
     console.log(dados);
     const formData = new FormData();
     formData.append('arquivo', dados.arquivo);
-    formData.append('data', dados.data.toString());
+    formData.append('data', dados.data);
     formData.append('descricao', dados.descricao);
+    formData.append('frequencia', dados.frequencia);
+    formData.append('codigo', dados.codigo);
+    formData.append('canais', dados.canais);
 
     return this.http.post(url, formData, {headers : headers})
   }

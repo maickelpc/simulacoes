@@ -28,7 +28,8 @@ import { LeituraComponent } from './leitura/leitura.component'
 import { EnvioArquivoBlocoComponent } from './leitura/envio-arquivo-bloco/envio-arquivo-bloco.component';
 import { ListagemLeituraBlocoComponent } from './leitura/listagem-leitura-bloco/listagem-leitura-bloco.component';
 import { FddComponent } from './fdd/fdd.component';
-import { FddService } from './services/fdd.service'
+import { FddService } from './services/fdd.service';
+import { FddFormComponent } from './fdd/fdd-form/fdd-form.component'
 
 
 @NgModule({
@@ -50,7 +51,9 @@ import { FddService } from './services/fdd.service'
     LeituraComponent,
     EnvioArquivoBlocoComponent,
     ListagemLeituraBlocoComponent,
-    FddComponent
+    FddComponent,
+
+    FddFormComponent
   ],
   imports: [
     FormsModule,

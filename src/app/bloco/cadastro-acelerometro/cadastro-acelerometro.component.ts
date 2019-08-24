@@ -19,8 +19,8 @@ export class CadastroAcelerometroComponent implements OnInit {
     private route : ActivatedRoute,
     private router : Router) { }
 
-  private acelerometro :Acelerometro;
-  private edicao :boolean;
+  acelerometro :Acelerometro;
+  edicao :boolean;
 
   ngOnInit() {
     let idAceletrometro: number = this.route.snapshot.params['id'];

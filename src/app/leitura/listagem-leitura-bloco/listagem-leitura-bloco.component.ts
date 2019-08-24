@@ -21,8 +21,8 @@ export class ListagemLeituraBlocoComponent implements OnInit {
     public confirmClicked: boolean = false;
     public cancelClicked: boolean = false;
 
-    private acelerometros: Acelerometro[];
-    public search: string;
+    acelerometros: Acelerometro[];
+    search: string;
 
     ngOnInit() {
       this.buscaAcelerometros('');
